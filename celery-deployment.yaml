@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery
+  template:
+    metadata:
+      labels:
+        app: celery
+    spec:
+      containers:
+        - name: celery
+          image: rohitdocker1996/chatbot
+          command: ["celery", "-A", "chatbot", "worker", "-l", "info"]
+          env:
+            - name: REDIS_HOST
+              value: redis
+            - name: DJANGO_HOST
+              value: django
