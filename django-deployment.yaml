@@ -14,9 +14,16 @@ spec:
     spec:
       containers:
         - name: django
-          image: rohitdocker1996/chatbot
+          image: rohitdocker1996/docker
           ports:
             - containerPort: 8000
           env:
             - name: REDIS_HOST
               value: redis
+          volumeMounts:
+            - mountPath: /static
+              name: static-volume
+      volumes:
+        - name: static-volume
+          hostPath:
+            path: /mnt/chatbots/chabotkube/static
