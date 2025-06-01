@@ -25,4 +25,4 @@ RUN python manage.py makemigrations
 RUN python manage.py migrate
 RUN python manage.py train
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["daphne", "-b", "0.0.0.0", "-p", "8000", "chatbot.asgi:application"]

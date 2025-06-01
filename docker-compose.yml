@@ -8,17 +8,30 @@ services:
 #    build:
 #      context: .
 #      dockerfile: Dockerfile
-    image: rohitdocker1996/chatbot
+    image: rohitdocker1996/docker
     ports:
       - "8000:8000"
+    volumes:
+      - .:/code
+      - ./static:/static
     depends_on:
       - redis
   celery:
 #    build:
 #      context: .
 #      dockerfile: Dockerfile
-    image: rohitdocker1996/chatbot
+    image: rohitdocker1996/docker
     command: celery -A chatbot worker -l info
     depends_on:
       - redis
+      - django
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./static:/static
+    depends_on:
       - django
