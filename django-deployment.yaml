@@ -26,4 +26,4 @@ spec:
       volumes:
         - name: static-volume
           hostPath:
-            path: /mnt/chatbots/kubebot/static
+            path: /mnt/chatbots/kubebot/chatbot/static
