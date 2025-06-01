@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: celery
-          image: rohitdocker1996/docker
+          image: rohitdocker1996/kubernetes
           command: ["celery", "-A", "chatbot", "worker", "-l", "info"]
           env:
             - name: REDIS_HOST
