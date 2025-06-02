@@ -26,8 +26,8 @@ spec:
       volumes:
         - name: nginx-config
           hostPath:
-            path: /mnt/chatbots/kubebot/chatbot/nginx/nginx.conf
+            path: /mnt/chatbot/chatbot/nginx/nginx.conf
             type: File
         - name: static-volume
           hostPath:
-            path: /mnt/chatbots/kubebot/chatbot/static
+            path: /mnt/chatbot/chatbot/static
